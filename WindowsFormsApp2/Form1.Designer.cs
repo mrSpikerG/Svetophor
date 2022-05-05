@@ -38,7 +38,7 @@ namespace WindowsFormsApp2
 
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
 
-            this.Location = new System.Drawing.Point(300, 0);
+            this.BackColor = Color.Red;
 
             this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
 
@@ -46,7 +46,8 @@ namespace WindowsFormsApp2
             this.oldHeight = this.Height;
             this.oldWidth = this.Width;
 
-           
+            this.Location = new System.Drawing.Point(Screen.AllScreens[0].WorkingArea.Width / 2 - this.oldWidth / 2, 0);
+
             timer = new System.Windows.Forms.Timer();
             timer.Interval = 4500;
             timer.Tick += Red;
@@ -54,8 +55,8 @@ namespace WindowsFormsApp2
         }
         private void Red(object sender, System.EventArgs e)
         {
-            this.Location = new System.Drawing.Point(300, 0);
-            timer.Interval = 45000;
+            this.Location = new System.Drawing.Point(Screen.AllScreens[0].WorkingArea.Width / 2 - this.oldWidth/2, 0);
+            timer.Interval = 4500;
 
             this.BackColor = Color.Red;
             this.Size = new Size(this.oldWidth, this.oldHeight);
@@ -63,20 +64,21 @@ namespace WindowsFormsApp2
         }
         private void Yellow(object sender, System.EventArgs e)
         {
-            this.Location = new System.Drawing.Point(300, 250);
             timer.Interval = 5000;
 
             this.BackColor = Color.Yellow;
-            this.Size = new Size(this.oldWidth/3, this.oldHeight/3);
+            this.Size = new Size(this.oldWidth / 3, this.oldHeight / 3);
+            this.Location = new System.Drawing.Point(Screen.AllScreens[0].WorkingArea.Width / 2 - this.oldWidth / 6, Screen.AllScreens[0].WorkingArea.Height / 2 - this.oldHeight / 6);
             timer.Tick += Green;
         }
         private void Green(object sender, System.EventArgs e)
         {
-            this.Location = new System.Drawing.Point(300, 400);
-            timer.Interval = 45000;
+            this.Location = new System.Drawing.Point(Screen.AllScreens[0].WorkingArea.Width / 2 - this.oldWidth / 4, Screen.AllScreens[0].WorkingArea.Height  - this.oldHeight / 2);
+           // this.Location = new System.Drawing.Point(Screen.AllScreens[0].WorkingArea.Width / 2 , Screen.AllScreens[0].WorkingArea.Width);// - this.oldHeight / 2);
+            timer.Interval = 4500;
 
             this.BackColor = Color.Green;
-            this.Size = new Size(this.oldWidth/2, this.oldHeight/2);
+            this.Size = new Size(this.oldWidth / 2, this.oldHeight / 2);
             timer.Tick += Red;
         }
 
